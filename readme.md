@@ -24,6 +24,15 @@
    
     symbol shown at the end of the code line ">>".
 
+4. As we can compare the files with other similarly we can also compare DIRECTORIES with other directories but this can be little
+   confusing and frustrarting as in this to compare directories we have to check whether the COMPANYDOMAIN for both the directories 
+   is same or not.if its not the same it can be slightly difficult for us to ocmpare directories.
+
+5. Also have added some java code after designing my layout page for my calculator app in order to make my buttons working.
+
+
+
+
 
 
 
