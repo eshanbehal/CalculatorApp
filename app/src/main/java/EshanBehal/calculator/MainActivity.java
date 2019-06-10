@@ -83,7 +83,38 @@ public class MainActivity extends AppCompatActivity {
         button9.setOnClickListener(listner);
         buttondot.setOnClickListener(listner);
 
+        //now as decided to create diffrent onclicklistner for operations.
 
+        View.OnClickListener opListner = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Button b = (Button) view;
+                String op = b.getText().toString();
+                String value = newNumber.getText().toString();
+                if(value.length() != 0){
+                    performOperation(value , op);
+                }
+                pendingOperation = op;
+                displayOperation.setText(pendingOperation);
+
+
+            }
+        };
+
+        // now as we have defined onclicklistner we will pass it for operation buttons.
+
+        buttonEguals.setOnClickListener(opListner);
+        buttonDivide.setOnClickListener(opListner);
+        buttonMultiply.setOnClickListener(opListner);
+        buttonMinus.setOnClickListener(opListner);
+        buttonPlus.setOnClickListener(opListner);
 
     }
+
+    //here as we have used performOperation in above code we write below dummy code just to check
+    //whether the code works properly or not.
+    private void performOperation(String value , String operation){
+        displayOperation.setText(operation);
+    }
+
 }
