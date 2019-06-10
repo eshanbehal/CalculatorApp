@@ -1,7 +1,8 @@
 package EshanBehal.calculator;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
     // variables to hold operands and type of operations.
 
     private Double operand1 = null;
-    private Double operand2 = null;
     private String pendingOperation = "=";
 
+    private static final String STATE_PENDING_OPERATION = "PendingOperation";
+    private static final String STATE_OPERAND1 = "Operand1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         Button button7 = (Button) findViewById(R.id.button7);
         Button button8 = (Button) findViewById(R.id.button8);
         Button button9 = (Button) findViewById(R.id.button9);
-        Button buttondot = (Button) findViewById(R.id.buttonDot);
+        Button buttonDot = (Button) findViewById(R.id.buttonDot);
 
         //now for simplifying the code written the operands are mentioned above and operations to
         //to be performed are written seperately.
@@ -81,37 +83,47 @@ public class MainActivity extends AppCompatActivity {
         button7.setOnClickListener(listner);
         button8.setOnClickListener(listner);
         button9.setOnClickListener(listner);
-        buttondot.setOnClickListener(listner);
+        buttonDot.setOnClickListener(listner);
 
-        //now as decided to create diffrent onclicklistner for operations.
-
-        View.OnClickListener opListner = new View.OnClickListener() {
+        View.OnClickListener opListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Button b = (Button) view;
                 String op = b.getText().toString();
                 String value = newNumber.getText().toString();
-                try{
-                    Double doublevalue = Double.valueOf(value);
-                            performOperation(doublevalue , op);
-                } catch(NumberFormatException e){
+                try {
+                    Double doubleValue = Double.valueOf(value);
+                    performOperation(doubleValue, op);
+                } catch (NumberFormatException e) {
                     newNumber.setText("");
                 }
                 pendingOperation = op;
                 displayOperation.setText(pendingOperation);
-
-
             }
         };
 
-        // now as we have defined onclicklistner we will pass it for operation buttons.
+        buttonEguals.setOnClickListener(opListener);
+        buttonDivide.setOnClickListener(opListener);
+        buttonMultiply.setOnClickListener(opListener);
+        buttonMinus.setOnClickListener(opListener);
+        buttonPlus.setOnClickListener(opListener);
+    }
 
-        buttonEguals.setOnClickListener(opListner);
-        buttonDivide.setOnClickListener(opListner);
-        buttonMultiply.setOnClickListener(opListner);
-        buttonMinus.setOnClickListener(opListner);
-        buttonPlus.setOnClickListener(opListner);
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString(STATE_PENDING_OPERATION, pendingOperation);
+        if (operand1 != null) {
+            outState.putDouble(STATE_OPERAND1, operand1);
+        }
+        super.onSaveInstanceState(outState);
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        pendingOperation = savedInstanceState.getString(STATE_PENDING_OPERATION);
+        operand1 = savedInstanceState.getDouble(STATE_OPERAND1);
+        displayOperation.setText(pendingOperation);
     }
 
     //here as we have used performOperation in above code we write below dummy code just to check
@@ -121,47 +133,34 @@ public class MainActivity extends AppCompatActivity {
         if (null == operand1) {
             operand1 = value;
         } else {
-            operand2 = value;
-
             if (pendingOperation.equals("=")) {
                 pendingOperation = operation;
             }
             // here using switch statement for the implementation of operations.
             switch (pendingOperation) {
                 case "=":
-                    operand1 = operand2;
+                    operand1 = value;
                     break;
-
                 case "/":
-                    if (operand2 == 0) {
+                    if (value == 0) {
                         operand1 = 0.0;
-
                     } else {
-                        operand1 /= operand2;
+                        operand1 /= value;
                     }
                     break;
-
                 case "*":
-
-                    operand1 *= operand2;
+                    operand1 *= value;
                     break;
-
                 case "-":
-                    operand1 -= operand2;
+                    operand1 -= value;
                     break;
-
                 case "+":
-                    operand1 += operand2;
+                    operand1 += value;
                     break;
-
             }
         }
 
-            result.setText(operand1.toString());
-            newNumber.setText("");
-
-        }
-
+        result.setText(operand1.toString());
+        newNumber.setText("");
     }
-
-
+}
