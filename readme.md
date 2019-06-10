@@ -51,6 +51,13 @@
 
    wanted to add that used "value" instead of operand 2 inorder to reduce the complexity of the code.
 
+4. jst forgot to add also modified my code for the bug fixes regarding the decimal pt and also used try and catch statement for
+   fixing the bug.nd also created a different res file for the landscape layout in order to make the calculator work smoothly
+   when views changed with the mobile.
+
+   nd at last inorder to save the instances from the portrait view to landscape view , a kind of bug only used the onsaveinstancestate
+   nd onrestoreinstance state nd wrote  the code under the same by overriding both these codes in the java file.
+
 
 
 
