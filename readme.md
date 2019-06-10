@@ -30,6 +30,13 @@
 
 5. Also have added some java code after designing my layout page for my calculator app in order to make my buttons working.
 
+6. after all the implementation of the widgets finally added code in java to implment the operation in java in order to make the app
+   working.
+
+   used the switch statement in order to implemnt the operations on the operands.
+
+
+
 
        10th june
    =================
