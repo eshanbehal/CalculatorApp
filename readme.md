@@ -47,6 +47,12 @@
 
 2. jst made my basic calculator working by implementing the operations in the java file.try once. will be updating code when needed.
 
+3. jst added the functionality to my app by writing code for the implementation of operations on the operands.
+
+   wanted to add that used "value" instead of operand 2 inorder to reduce the complexity of the code.
+
+
+
 
 
 
