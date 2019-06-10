@@ -38,6 +38,8 @@
 1. just started today by adding some more code for my buttons to function properly.started by creating onclicklistners for the operations
    buttons.
 
+2. jst made my basic calculator working by implementing the operations in the java file.try once. will be updating code when needed.
+
 
 
 
