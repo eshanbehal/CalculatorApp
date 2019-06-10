@@ -91,8 +91,11 @@ public class MainActivity extends AppCompatActivity {
                 Button b = (Button) view;
                 String op = b.getText().toString();
                 String value = newNumber.getText().toString();
-                if(value.length() != 0){
-                    performOperation(value , op);
+                try{
+                    Double doublevalue = Double.valueOf(value);
+                            performOperation(doublevalue , op);
+                } catch(NumberFormatException e){
+                    newNumber.setText("");
                 }
                 pendingOperation = op;
                 displayOperation.setText(pendingOperation);
@@ -113,12 +116,12 @@ public class MainActivity extends AppCompatActivity {
 
     //here as we have used performOperation in above code we write below dummy code just to check
     //whether the code works properly or not.
-    private void performOperation(String value , String operation) {
+    private void performOperation(Double value , String operation) {
         // displayOperation.setText(operation);
         if (null == operand1) {
-            operand1 = Double.valueOf(value);
+            operand1 = value;
         } else {
-            operand2 = Double.valueOf(value);
+            operand2 = value;
 
             if (pendingOperation.equals("=")) {
                 pendingOperation = operation;
