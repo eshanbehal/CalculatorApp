@@ -73,8 +73,29 @@
   
   *Horizontal guidelines have a height zero and width of their constraint layout parent.
 
+
+
   
    for more info can go to this link : https://developer.android.com/reference/android/support/constraint/Guideline.html
+
+
+
+3. at last i have set the layout for both portrait and landscape with help of guide lines and setting other constraints values.
+
+4. Also added a new functionality to my calculator by adding a negation button to it and implemented it in my app.
+
+   it provide us the ability to enter the negative numbers for the calculation.
+
+
+   just wait nd watch for more future improvements.Right now jst thinking to add more and more functionality to my 
+   app...:)
+
+
+
+   will be updating soon with some new features....
+
+
+   
 
 
 
