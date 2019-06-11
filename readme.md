@@ -58,6 +58,24 @@
    nd at last inorder to save the instances from the portrait view to landscape view , a kind of bug only used the onsaveinstancestate
    nd onrestoreinstance state nd wrote  the code under the same by overriding both these codes in the java file.
 
+   
+       11th june
+    ===============
+
+1. jst started today by learning some imp concepts about constraining the widgets for each view ie portrait as well as landscape.
+
+2. read about the use of GUIDELINES in order to constraint our views for the different views.used this thing in order to center 
+   my widgets.
+   these can be added either from top symbol placed with magnewt button or jst by right clicking in the design and from there selecting
+   helpers option nd selecting guidelines for horizontal or vertical.
+
+  *Vertical guidelines have a width of zero and the height of their constraint layout parent.where as 
+  
+  *Horizontal guidelines have a height zero and width of their constraint layout parent.
+
+  
+   for more info can go to this link : https://developer.android.com/reference/android/support/constraint/Guideline.html
+
 
 
 
